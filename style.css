@@ -1,0 +1,74 @@
+/* Tailwind로 표현하기 어려운 부분만 정의 */
+
+.gradient-text {
+  background: linear-gradient(90deg, #0ea5e9, #2563eb, #4f46e5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #475569;
+  transition: color 0.2s;
+}
+.nav-link:hover,
+.nav-link.active { color: #2563eb; }
+.dark .nav-link { color: #cbd5e1; }
+.dark .nav-link:hover,
+.dark .nav-link.active { color: #60a5fa; }
+
+.mobile-link {
+  display: block;
+  padding: 0.75rem 0.25rem;
+  font-weight: 500;
+}
+
+.section-title {
+  margin-bottom: 1.5rem;
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+.dark .section-title { color: #fff; }
+
+.tag {
+  border-radius: 9999px;
+  background: #eff6ff;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #1d4ed8;
+}
+.dark .tag { background: #172554; color: #93c5fd; }
+
+/* 스크롤 등장 애니메이션 */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* 스크롤 후 헤더 배경 */
+#header.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 rgba(15, 23, 42, 0.08);
+}
+.dark #header.scrolled {
+  background: rgba(2, 6, 23, 0.85);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+#toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* 고정 헤더 높이만큼 앵커 위치 보정 */
+section[id] { scroll-margin-top: 4rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto !important; }
+}
